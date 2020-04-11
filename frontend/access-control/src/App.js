@@ -11,7 +11,7 @@ function App(props) {
     <div className="app-wrapper">
       <Header />
       <div className="app-wrapper-content">
-          <AccountContainer />
+          <Route path="/home" render={() => <AccountContainer />}></Route>
       </div>
       <Footer />
     </div>

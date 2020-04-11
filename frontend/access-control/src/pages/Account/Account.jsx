@@ -1,12 +1,17 @@
 import React from 'react';
 import DataTable from '../../components/DataTable';
-import Cards from '../../components/Cards';
+import Search from '../../components/Search';
+import { Container } from 'react-bootstrap';
+import DataCRUD from '../../components/DataCRUD';
+
 
 let Account = (props) => {
     return (
         <>
-            <Cards />
-            <DataTable  accountData={props.accountData}/>
+            <Container>
+                <Search />
+                <DataTable  accountData={props.accountData}/>
+            </Container>
         </>
     )
 };

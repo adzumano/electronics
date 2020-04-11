@@ -1,13 +1,14 @@
 import React from 'react';
 import {Table, Button, Container, Row} from 'react-bootstrap';
+import DataPagination from './DataPagination';
+import DataCRUD from './DataCRUD';
 let DataTable = (props) => {
     const divStyle = {
         paddingTop: '50px',
     };
     return (
-        <Container style={divStyle}>
-            <Row>
-                <h2>Accounts</h2>
+            <Row style={divStyle}>
+                <DataCRUD />
                 <Table striped bordered hover m-2>
                     <thead>
                         <tr>
@@ -35,8 +36,8 @@ let DataTable = (props) => {
                         }
                     </tbody>
                 </Table>
+                <DataPagination />
             </Row>
-        </Container>
     )
 };
 
