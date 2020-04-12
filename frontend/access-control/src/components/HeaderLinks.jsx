@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const styles = {
     navLink : {
-        color : '#283655',
+        color : '#0275d8',
         fontWeight : 'normal',
         fontSize : '24px',
         paddingRight : '80px',

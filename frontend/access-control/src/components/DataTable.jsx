@@ -2,12 +2,19 @@ import React from 'react';
 import {Table, Button, Container, Row} from 'react-bootstrap';
 import DataPagination from './DataPagination';
 import DataCRUD from './DataCRUD';
+import {NavLink} from 'react-router-dom';
 let DataTable = (props) => {
-    const divStyle = {
-        paddingTop: '50px',
+    const styles = {
+        divStyle : {
+            paddingTop: '50px',
+        },
+        navLink : {
+            color : '#fff',
+            textDecoration : "none"
+        }
     };
     return (
-            <Row style={divStyle}>
+            <Row style={styles.divStyle}>
                 <DataCRUD />
                 <Table striped bordered hover m-2>
                     <thead>
@@ -24,7 +31,7 @@ let DataTable = (props) => {
                     <tbody>
                         {
                             props.accountData.map(account => <tr key={account.id}>
-                                <td><Button variant="primary">View</Button>{' '}</td>
+                                <td><Button variant="primary"><NavLink to="/profile" style={styles.navLink}>View</NavLink></Button>{' '}</td>
                                 <td>{account.id}</td>
                                 <td>{account.name}</td>
                                 <td>{account.surname}</td>
