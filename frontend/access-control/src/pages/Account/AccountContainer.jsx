@@ -10,7 +10,7 @@ class AccountContainer extends React.Component {
     }
     getAccounts() {
         axios
-        .get(`http://127.0.0.1:8000/api/v1/`)
+        .get(`http://127.0.0.1:8000/api/v1/accounts/list/`)
         .then(response => {
             this.props.setAccounts(response.data)
         })

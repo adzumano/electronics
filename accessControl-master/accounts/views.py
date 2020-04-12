@@ -2,31 +2,23 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
 from rest_framework import viewsets, permissions
-from .serializers import EmployeesSerializer
+from .serializers import EmployeesSerializer, EmployeesDetailSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
-
+from rest_framework import generics
+from .permissions import IsOwnerOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 #Employees Viewset
 
-class EmployeesViewSet(APIView):
-    def get(self, request):
-        employees = Employees.objects.all()
-        serializer = EmployeesSerializer(employees,many=True)
-        return Response(serializer.data)
+class EmployeesCreateViewSet(generics.CreateAPIView):
+    serializer_class = EmployeesSerializer
 
-    def post(self):
-        pass
-    
-    def put(self):
-        pass
+class EmployeesListViewSet(generics.ListAPIView):
+    serializer_class = EmployeesDetailSerializer
+    queryset = Employees.objects.all()
+    # permission_classes = (IsAuthenticated, )
 
-    def delete(self):
-        pass
-    
-    def home(request):
-        employees = Employees.objects.all()
-        total_employees = employees.count()
-        teachers = employees.filter(status='Teacher').count()
-        students = employees.filter(status='Student').count()
-        context = {'employees':employees,'total_employees':total_employees,'teachers':teachers,'students':students}
-        return render(request, 'accounts/dashboard.html',context)
+class EmployeesDetailViewSet(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = EmployeesDetailSerializer
+    queryset = Employees.objects.all()
+    # permission_classes = (IsOwnerOrReadOnly, )
