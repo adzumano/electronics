@@ -1,26 +1,29 @@
 import React from 'react';
 import {Pagination} from 'react-bootstrap';
 
-let DataPagination = (props) => {
-    return <>
-    <Pagination size="xs">
-        <Pagination.First />
-        <Pagination.Prev />
-        <Pagination.Item>{1}</Pagination.Item>
-        <Pagination.Ellipsis />
 
-        <Pagination.Item>{10}</Pagination.Item>
-        <Pagination.Item>{11}</Pagination.Item>
-        <Pagination.Item active>{12}</Pagination.Item>
-        <Pagination.Item>{13}</Pagination.Item>
-        <Pagination.Item disabled>{14}</Pagination.Item>
-
-        <Pagination.Ellipsis />
-        <Pagination.Item>{20}</Pagination.Item>
-        <Pagination.Next />
-        <Pagination.Last />
-    </Pagination>
-    </>
+const DataPagination = (props) => {
+    const first = 1;
+    const pageNumbers = [];
+    for(let i = 1; i <= Math.ceil(props.totalAccounts / props.accountsPerPage); i++){
+        pageNumbers.push(i);
+    }
+    const last = Math.ceil(props.totalAccounts / props.accountsPerPage);
+    return (
+        <Pagination size="xs" className="justify-content-center">
+            <Pagination.First onClick={() => props.paginate(first)} className={props.currentPage === first ? `disabled` : ''}/>
+            <Pagination.Prev onClick={() => props.paginate(props.currentPage - 1)} className={props.currentPage === first ? `disabled` : ''}/>
+            {
+                pageNumbers.map(number => 
+                    <Pagination.Item key={number} onClick={() => props.paginate(number)} className={props.currentPage === number ? 'active' : ''}>
+                    {number}
+                    </Pagination.Item>   
+                )   
+            }
+            <Pagination.Next onClick={() => props.paginate(props.currentPage + 1)} className={props.currentPage === last ? `disabled` : ''}/>
+            <Pagination.Last onClick={() => props.paginate(last)} className={props.currentPage === last ? `disabled` : ''}/>
+        </Pagination>
+    )
 };
 
 export default DataPagination;

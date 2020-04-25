@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [] # url host
 INSTALLED_APPS = [
     'accounts',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -143,3 +144,8 @@ CORS_ORIGIN_WHITELIST = [
     #         'rest_framework.renderers.JSONRenderer',
     #     )
     # }
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+#     'PAGE_SIZE': 5
+# }

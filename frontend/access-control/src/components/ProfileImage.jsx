@@ -4,11 +4,12 @@ import userImage from '../assets/img/user-name.png';
 
 
 let ProfileImage = (props) => {
+
     let imageRes = {
         width : '15rem',
     }
     return <>
-        <Image style={imageRes} src={userImage} thumbnail/>
+        <Image style={imageRes} src={props.photo ? props.photo : userImage} thumbnail/>
     </>
 };
 

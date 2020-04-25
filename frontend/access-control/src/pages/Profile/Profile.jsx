@@ -7,7 +7,7 @@ let Profile = (props) => {
         <Container>
             <h2 className="text-center text-primary" style={{paddingTop : '50px'}}>Profile</h2>
             <Form>
-                <ProfileInfo />
+                <ProfileInfo profile={props.profile} editAccountData={props.editAccountData}/>
                 <ProfileService />
             </Form>
         </Container>

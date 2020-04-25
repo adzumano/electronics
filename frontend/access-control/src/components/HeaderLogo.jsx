@@ -8,7 +8,7 @@ let HeaderLogo = (props) => {
         width : '8rem'
     }
     return <>
-        <NavLink to="/home"><Image style={imageRes} src={headerLogo} rounded /></NavLink>
+        <NavLink to="/"><Image style={imageRes} src={headerLogo} rounded /></NavLink>
     </>
 };
 
